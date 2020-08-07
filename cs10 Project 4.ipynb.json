@@ -1,0 +1,193 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "    <thead>\n",
+       "        <tr>\n",
+       "            <th>Username</th> <th>Full Name</th> <th>How old are you?</th> <th>Education</th> <th>Major (By Berkeley College)</th> <th>How risk averse are you?</th> <th>Introvert or Extrovert?</th> <th>What music do you listen to? (Check off all that apply)</th> <th>What's your ideal day off?</th> <th>What's your love language?</th> <th>Pick Three Interests</th> <th>(Optional) Include your Instagram handle here if you want to actually be found and possibly make friends through this project!</th>\n",
+       "        </tr>\n",
+       "    </thead>\n",
+       "    <tbody>\n",
+       "        <tr>\n",
+       "            <td>michelle.yan@berkeley.edu    </td> <td>Michelle Yan    </td> <td>21              </td> <td>Fifth+ Year</td> <td>L&S - STEM (Applied Mathematics, Statistics, Data Scienc ...</td> <td>3                       </td> <td>Extrovert              </td> <td>Rap;R&B                                                </td> <td>Going to a beach          </td> <td>Acts of Service           </td> <td>Environment;Animals;Memes           </td> <td>y.mich                                                                                                                        </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>maxinesc@berkeley.edu        </td> <td>Maxine Sy Chu   </td> <td>19              </td> <td>Second Year</td> <td>College of Engineering (Bioengineering; Civil & Environm ...</td> <td>7                       </td> <td>Introvert              </td> <td>Pop;Rap;Electronic;Rock                                </td> <td>Chilling at home          </td> <td>Quality Time              </td> <td>Music;Memes;Video Games             </td> <td>@maxine.sc                                                                                                                    </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>graciechung@berkeley.edu     </td> <td>Gracie Chung    </td> <td>18 and younger  </td> <td>Second Year</td> <td>L&S - STEM (Applied Mathematics, Statistics, Data Scienc ...</td> <td>8                       </td> <td>Introvert              </td> <td>Pop;Rap;R&B                                            </td> <td>Chilling at home          </td> <td>Words of Affirmation      </td> <td>Science/Technology;Animals;Music    </td> <td>gracieeunhae                                                                                                                  </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>aaronbaker@berkeley.edu      </td> <td>Aaron Baker     </td> <td>22              </td> <td>Fifth+ Year</td> <td>L&S - STEM (Applied Mathematics, Statistics, Data Scienc ...</td> <td>3                       </td> <td>Extrovert              </td> <td>Pop;Rap;Electronic;Rock;R&B;Musical                    </td> <td>Attending a party         </td> <td>Quality Time              </td> <td>Science/Technology;Sports;Music     </td> <td>nan                                                                                                                           </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>ashysze@gmail.com            </td> <td>Ash Sze         </td> <td>19              </td> <td>Second Year</td> <td>College of Engineering (Bioengineering; Civil & Environm ...</td> <td>3                       </td> <td>Introvert              </td> <td>Pop;Rap;Electronic;Rock                                </td> <td>Going shopping            </td> <td>Words of Affirmation      </td> <td>Music;Memes;Video Games             </td> <td>ash_sze                                                                                                                       </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>kristelfung@berkeley.edu     </td> <td>Kristel Fung    </td> <td>20              </td> <td>Second Year</td> <td>L&S - Humanities (Philosophy, Psychology, Sociology, Art ...</td> <td>4                       </td> <td>Extrovert              </td> <td>Pop;Electronic                                         </td> <td>Attending a party         </td> <td>Quality Time              </td> <td>Sports;Fashion;Art                  </td> <td>kristelfung                                                                                                                   </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>mdundar@berkeley.edu         </td> <td>Melisa Dundar   </td> <td>18 and younger  </td> <td>High School</td> <td>Not in College Yet!                                         </td> <td>7                       </td> <td>Extrovert              </td> <td>Pop;Rap;R&B                                            </td> <td>Going to a beach          </td> <td>Quality Time              </td> <td>Environment;Science/Technology;Music</td> <td>nan                                                                                                                           </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>vickysemenina@berkeley.edu   </td> <td>Vicky Semenina  </td> <td>21              </td> <td>Other      </td> <td>L&S - STEM (Applied Mathematics, Statistics, Data Scienc ...</td> <td>5                       </td> <td>Extrovert              </td> <td>Pop;Rap;Electronic                                     </td> <td>Going to a beach          </td> <td>Acts of Service           </td> <td>Science/Technology;Sports;Music     </td> <td>@vickysemenina                                                                                                                </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>iyavari@berkeley.edu         </td> <td>Bella Yavari    </td> <td>21              </td> <td>Fourth Year</td> <td>L&S - STEM (Applied Mathematics, Statistics, Data Scienc ...</td> <td>4                       </td> <td>Extrovert              </td> <td>Pop;Rap;Electronic;Country;Rock;R&B;Jazz;Musical       </td> <td>Being in nature           </td> <td>Acts of Service           </td> <td>Science/Technology;Sports;Music     </td> <td>@bella.yav                                                                                                                    </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>harcourt.rebecca@berkeley.edu</td> <td>Rebecca Harcourt</td> <td>22              </td> <td>Other      </td> <td>L&S - STEM (Applied Mathematics, Statistics, Data Scienc ...</td> <td>6                       </td> <td>Introvert              </td> <td>Pop;Electronic;R&B                                     </td> <td>Being in nature           </td> <td>Words of Affirmation      </td> <td>Environment;Animals;Art             </td> <td>rebecca_harcourt                                                                                                              </td>\n",
+       "        </tr>\n",
+       "    </tbody>\n",
+       "</table>\n",
+       "<p>... (34 rows omitted)</p>"
+      ],
+      "text/plain": [
+       "Username                      | Full Name        | How old are you? | Education   | Major (By Berkeley College)                                  | How risk averse are you? | Introvert or Extrovert? | What music do you listen to? (Check off all that apply) | What's your ideal day off? | What's your love language? | Pick Three Interests                 | (Optional) Include your Instagram handle here if you want to actually be found and possibly make friends through this project!\n",
+       "michelle.yan@berkeley.edu     | Michelle Yan     | 21               | Fifth+ Year | L&S - STEM (Applied Mathematics, Statistics, Data Scienc ... | 3                        | Extrovert               | Rap;R&B                                                 | Going to a beach           | Acts of Service            | Environment;Animals;Memes            | y.mich\n",
+       "maxinesc@berkeley.edu         | Maxine Sy Chu    | 19               | Second Year | College of Engineering (Bioengineering; Civil & Environm ... | 7                        | Introvert               | Pop;Rap;Electronic;Rock                                 | Chilling at home           | Quality Time               | Music;Memes;Video Games              | @maxine.sc\n",
+       "graciechung@berkeley.edu      | Gracie Chung     | 18 and younger   | Second Year | L&S - STEM (Applied Mathematics, Statistics, Data Scienc ... | 8                        | Introvert               | Pop;Rap;R&B                                             | Chilling at home           | Words of Affirmation       | Science/Technology;Animals;Music     | gracieeunhae\n",
+       "aaronbaker@berkeley.edu       | Aaron Baker      | 22               | Fifth+ Year | L&S - STEM (Applied Mathematics, Statistics, Data Scienc ... | 3                        | Extrovert               | Pop;Rap;Electronic;Rock;R&B;Musical                     | Attending a party          | Quality Time               | Science/Technology;Sports;Music      | nan\n",
+       "ashysze@gmail.com             | Ash Sze          | 19               | Second Year | College of Engineering (Bioengineering; Civil & Environm ... | 3                        | Introvert               | Pop;Rap;Electronic;Rock                                 | Going shopping             | Words of Affirmation       | Music;Memes;Video Games              | ash_sze\n",
+       "kristelfung@berkeley.edu      | Kristel Fung     | 20               | Second Year | L&S - Humanities (Philosophy, Psychology, Sociology, Art ... | 4                        | Extrovert               | Pop;Electronic                                          | Attending a party          | Quality Time               | Sports;Fashion;Art                   | kristelfung\n",
+       "mdundar@berkeley.edu          | Melisa Dundar    | 18 and younger   | High School | Not in College Yet!                                          | 7                        | Extrovert               | Pop;Rap;R&B                                             | Going to a beach           | Quality Time               | Environment;Science/Technology;Music | nan\n",
+       "vickysemenina@berkeley.edu    | Vicky Semenina   | 21               | Other       | L&S - STEM (Applied Mathematics, Statistics, Data Scienc ... | 5                        | Extrovert               | Pop;Rap;Electronic                                      | Going to a beach           | Acts of Service            | Science/Technology;Sports;Music      | @vickysemenina\n",
+       "iyavari@berkeley.edu          | Bella Yavari     | 21               | Fourth Year | L&S - STEM (Applied Mathematics, Statistics, Data Scienc ... | 4                        | Extrovert               | Pop;Rap;Electronic;Country;Rock;R&B;Jazz;Musical        | Being in nature            | Acts of Service            | Science/Technology;Sports;Music      | @bella.yav\n",
+       "harcourt.rebecca@berkeley.edu | Rebecca Harcourt | 22               | Other       | L&S - STEM (Applied Mathematics, Statistics, Data Scienc ... | 6                        | Introvert               | Pop;Electronic;R&B                                      | Being in nature            | Words of Affirmation       | Environment;Animals;Art              | rebecca_harcourt\n",
+       "... (34 rows omitted)"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "%matplotlib inline\n",
+    "import matplotlib.pyplot as plt\n",
+    "from datascience import *\n",
+    "data = Table.read_table('Friend Finder Data Form.csv')\n",
+    "data.drop('Timestamp')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Counttable = Table().with_columns('education','music', 'interest', 'risk')\n",
+    "def musicmatch(list, data):\n",
+    "    count = 0\n",
+    "    newcolumn=[]\n",
+    "    music=data.select('What music do you listen to? (Check off all that apply)')\n",
+    "    for i in range(data.num_rows):\n",
+    "        for j in range(3):\n",
+    "            if data.take(i).split(';').item(j) == list.split(';').item(j):\n",
+    "                count+=.5\n",
+    "        newcolumn.append(count)\n",
+    "    return newcolumn\n",
+    "#data.select('Full Name').with_columns('count', newcolumn).sort('newcolumns', descending = True).take(5).select('Full Name')\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def riskcalc(input, data):\n",
+    "    count = 0\n",
+    "    newcolumn=[]\n",
+    "    risk = data.select('Full Name', 'How risk averse are you?')\n",
+    "    for i in risk.column(1):\n",
+    "        if i==input:\n",
+    "            newcolumn.append(1)\n",
+    "        if abs(i-input)==1:\n",
+    "            newcolumn.append(0.5)\n",
+    "        else:\n",
+    "            newcolumn.append(0)\n",
+    "    return newcolumn\n",
+    "#riskcalc(3, risk)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def introextro(input, data):\n",
+    "    count = 0\n",
+    "    newcolumn=[]\n",
+    "    intext=data.select('Full Name','Introvert or Extrovert?')\n",
+    "    for i in intext.column(1):\n",
+    "        if i==input:\n",
+    "            newcolumn.append(1)\n",
+    "        else:\n",
+    "            newcolumn.append(0)\n",
+    "    return newcolumn"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def dayoff(input, data):\n",
+    "    offday=data.select('Full Name', \"What's your ideal day off\")\n",
+    "    count = 0\n",
+    "    newcolumn=[]\n",
+    "    for i in intext.column(1):\n",
+    "        if i==input:\n",
+    "            newcolumn.append(1)\n",
+    "        else:\n",
+    "            newcolumn.append(0)\n",
+    "    return newcolumn"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "##make a table of full names and counts from above. Return the top 5 names, and every column besides timestamp and email\n",
+    "##return profiles as Name: ~, I'm a ''year student majoring in ''. I like to listen to '' and i'd choose to '' on my day off. \n",
+    "def classify()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
